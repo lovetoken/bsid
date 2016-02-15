@@ -54,7 +54,7 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, output.naming=NULL
     height <- attributes(tmp.readbmp)$header$height
 
     # M matrix space
-    M <- matrix(NA, nrow=width*height, ncol=length(filename))
+    M <- matrix(NA, nrow=width*height, ncol=length(wd))
 
     # M matrix space <- grey scale pixel value
 
