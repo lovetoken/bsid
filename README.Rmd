@@ -1,6 +1,5 @@
 ---
 title: "Overview of bsid package" 
-author: "lovetoken"
 output: 
   html_document: 
     fig_caption: yes
@@ -15,12 +14,16 @@ output:
 useful.lovetoken::librarys(c("bsid", "useful.lovetoken", "dplyr", "bmp", "pixmap", "animation", "corpcor", "progress", "servr", "knitr"), auto.upd=F)
 
 ## knitr global option
-opts_chunk$set(fig.path='figure/', warning=F)
+opts_chunk$set(fig.path='figure/', warning=F, message=F, cache=T)
 ```
+
+Background Subtraction and Image Denoising (BSID) R package
 
 *********************************************************************
 
-# creating M matrix
+# Example bsid package in R
+
+## creating M matrix
 
 Mmatrix 만들기
 
@@ -37,7 +40,7 @@ save_anipic(M, save.name="airport_sub_M")
 
 ![](airport_sub_M.gif)
 
-# PCP
+## PCP algorithm
 
 ```{r}
 PCP(M)
@@ -52,17 +55,22 @@ save_anipic(L, save.name="airport_sub_L")
 save_anipic(S, save.name="airport_sub_S")
 ```
 
+L matrix
+
 ![](airport_sub_L.gif)
+
+S matrix
+
 ![](airport_sub_S.gif)
 
-# Mmatrix 에 point type WN 추가하기
+## Mmatrix 에 PWN<sub>Point type White Noise</sub> 추가하기
 
 ```{r}
 WN_point(M)
 Mstar <- bsid_env$Mstar
 ```
 
-확인하기
+Mstar 확인하기
 
 ```{r}
 save_anipic(Mstar, save.name="airport_sub_Mstar")
@@ -70,7 +78,7 @@ save_anipic(Mstar, save.name="airport_sub_Mstar")
 
 ![](airport_sub_Mstar.gif)
 
-# Mstar PCP
+## Mstar PCP
 
 ```{r}
 PCP(Mstar)
@@ -78,19 +86,30 @@ Lstar <- bsid_env$L
 Sstar <- bsid_env$S
 ```
 
-확인하기
-
 ```{r}
 save_anipic(Lstar, save.name="airport_sub_Lstar")
 save_anipic(Sstar, save.name="airport_sub_Sstar")
 ```
 
+Lstar matrix
+
 ![](airport_sub_Lstar.gif)
+
+Sstar matirx
+
 ![](airport_sub_Sstar.gif)
 
-# Image Denoising
+## Image Denoising
 
-구현중입니다.
+coming soon.
+
+## MSE compare
+
+coming soon.
+
+# Author & Maintainer
+
+HyoJin_Song <lt.lovetoken@gmail.com>, <http://lovetoken.dothome.co.kr/>
 
 **********************************************************************
 
