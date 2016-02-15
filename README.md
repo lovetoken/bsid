@@ -23,7 +23,7 @@ Background Subtraction and Image Denoising (BSID) R package
 
 ## creating M matrix
 
-Mmatrix 만들기
+M matrix 만들기 `creat_vm()`
 
 
 ```r
@@ -31,7 +31,7 @@ creat_vm(path="./example_data/airport_sub/")
 M <- bsid_env$M
 ```
 
-M matrix 확인하기
+$M$ 확인하기 `save_anipic()`
 
 
 ```r
@@ -42,6 +42,8 @@ save_anipic(M, save.name="airport_sub_M")
 
 ## PCP algorithm
 
+Principal Component Pursuit algorithm 를 이용하여 L, S matrix 만들기 `PCP()`
+
 
 ```r
 PCP(M)
@@ -49,7 +51,7 @@ L <- bsid_env$L
 S <- bsid_env$S
 ```
 
-L, S matrix 확인하기
+$L, S$ 확인하기
 
 
 ```r
@@ -57,15 +59,17 @@ save_anipic(L, save.name="airport_sub_L")
 save_anipic(S, save.name="airport_sub_S")
 ```
 
-L matrix
+$L$ matrix
 
 ![](airport_sub_L.gif)
 
-S matrix
+$S$ matrix
 
 ![](airport_sub_S.gif)
 
-## Mmatrix 에 PWN<sub>Point type White Noise</sub> 추가하기
+## M matrix 에 PWN<sub>Point type White Noise</sub> 추가하기
+
+임의위치의 픽셀값을 1로 부여하여 잡음을 추가 `WN_point()`
 
 
 ```r
@@ -73,7 +77,7 @@ WN_point(M)
 Mstar <- bsid_env$Mstar
 ```
 
-Mstar 확인하기
+$M^\star$ 확인하기
 
 
 ```r
@@ -97,11 +101,11 @@ save_anipic(Lstar, save.name="airport_sub_Lstar")
 save_anipic(Sstar, save.name="airport_sub_Sstar")
 ```
 
-Lstar matrix
+$L^\star$ 확인하기
 
 ![](airport_sub_Lstar.gif)
 
-Sstar matirx
+$S^\star$ 확인하기
 
 ![](airport_sub_Sstar.gif)
 
@@ -113,9 +117,14 @@ coming soon.
 
 coming soon.
 
-# Author & Maintainer
+# package Maintainer
 
-HyoJin_Song <lt.lovetoken@gmail.com>, <http://lovetoken.dothome.co.kr/>
+Song HyoJin 
+
+- Korean R user
+- [HUFS](http://www.hufs.ac.kr/user/hufsenglish/) student 
+- email : <lt.lovetoken@gmail.com>
+- blog : <http://lovetoken.dothome.co.kr/>
 
 **********************************************************************
 
