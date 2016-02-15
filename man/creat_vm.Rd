@@ -2,7 +2,7 @@
 % Please edit documentation in R/creat_vm.R
 \name{creat_vm}
 \alias{creat_vm}
-\title{Create vedio matrix (미완성)}
+\title{Create vedio matrix}
 \usage{
 creat_vm(wd = dir(full.names = TRUE, ...), rgb = FALSE,
   save.env = "bsid_env", output.naming = NULL, ...)

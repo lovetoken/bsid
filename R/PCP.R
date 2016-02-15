@@ -1,4 +1,4 @@
-#' PCP algorithm (미완성)
+#' PCP algorithm
 #'
 #' PCP algorithm
 #' @param x 영상정보 matrix 를 입력합니다.
@@ -10,6 +10,12 @@
 #' @details 본 함수는 \code{Singular_value_thresholding_operator()}, \code{Shrinkage_operator()} 함수를 이용합니다.
 #' @export
 #' @examples
+#' PCP(M)
+#' ls(bsid_env)
+#'
+#' # identify video of L, S
+#' save_anipic(bsid_env$L, save.name="L")
+#' save_anipic(bsid_env$S, save.name="S")
 
 PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
   # pre
@@ -39,11 +45,17 @@ PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
     iter <- iter+1
   }
 
+  # attributes of `L`, `S`
+  attr(S, "width") <- attr(L, "width") <- attributes(x)$width
+  attr(S, "height") <- attr(L, "height") <- attributes(x)$height
+  attr(S, "n1") <- attr(L, "n1") <- attributes(x)$n1
+  attr(S, "n2") <- attr(L, "n2") <- attributes(x)$n2
+
   # return
   assign("L", L, envir=get(save.env))
   assign("S", S, envir=get(save.env))
   if(is.character(output.naming)) save(L, S, file=paste0(output.naming, ".Rdata"))
 
   # round off
-  message("L, S objects are saved (", save_env, "envir.)")
+  message("L, S objects are saved (", save.env, "envir.)")
 }

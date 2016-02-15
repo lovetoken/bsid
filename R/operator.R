@@ -18,7 +18,7 @@ Shrinkage_operator <- function(tau, x){
 
 Singular_value_thresholding_operator <- function(tau, x){
   # pre
-  stopifnot(require("corpcor"))
+  stopifnot(require(corpcor))
 
   # content
   svd.x <- fast.svd(x)
@@ -27,7 +27,7 @@ Singular_value_thresholding_operator <- function(tau, x){
   D <- diag(svd.x$d)
   V <- svd.x$v
 
-  res <- U%*%Shrinkage.operator(tau, D)%*%t(V)
+  res <- U%*%Shrinkage_operator(tau, D)%*%t(V)
 
   # round off
   rm(svd.x, U, D, V)
