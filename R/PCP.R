@@ -11,28 +11,28 @@
 #' @export
 #' @examples
 
-PCP <- function(x, n1, n2, iter.max=100, save.env="bsdi_env", output.naming=NULL){
+PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
   # pre
-  stopifnot(is.integer(n1))
-  stopifnot(is.integer(n2))
   stopifnot(is.integer(iter.max))
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir=globalenv())
+  n1 <- attributes(x)$n1
+  n2 <- attributes(x)$n2
 
   # content
   S <- Y <- 0
-  mu <- (n1*n2)/(4*sum(abs(M)))
+  mu <- (n1*n2)/(4*sum(abs(x)))
   lamda <- sqrt(max(n1, n2))^(-1)
   delta <- 10^(-7)
 
   iter <- 1
   repeat{
-    L <- Singular_value_thresholding_operator(mu^(-1), M-S+mu^(-1)*Y)
-    S <- Shrinkage_operator(lamda*mu^(-1), M-L+mu^(-1)*Y)
-    Y <- Y+mu*(M-L-S)
+    L <- Singular_value_thresholding_operator(mu^(-1), x-S+mu^(-1)*Y)
+    S <- Shrinkage_operator(lamda*mu^(-1), x-L+mu^(-1)*Y)
+    Y <- Y+mu*(x-L-S)
 
     # repeat break condition
-    if (norm(M-L-S, "F") <= delta*norm(M, "F") | iter == iter.max){
+    if (norm(x-L-S, "F") <= delta*norm(x, "F") | iter == iter.max){
       break
     }
 
@@ -40,8 +40,8 @@ PCP <- function(x, n1, n2, iter.max=100, save.env="bsdi_env", output.naming=NULL
   }
 
   # return
-  assign("L", L, envir=get(save_env))
-  assign("S", S, envir=get(save_env))
+  assign("L", L, envir=get(save.env))
+  assign("S", S, envir=get(save.env))
   if(is.character(output.naming)) save(L, S, file=paste0(output.naming, ".Rdata"))
 
   # round off

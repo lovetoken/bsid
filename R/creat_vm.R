@@ -11,11 +11,12 @@
 #' @export
 #' @examples
 
-creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, output.naming=NULL, ...){
+creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env", output.naming=NULL, ...){
   # pre
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   stopifnot(is(wd, "vector"))
   wd <- sort(wd)
+  if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir=globalenv())
 
   # content
   if(rgb==TRUE){ # rgb 구현중
@@ -73,7 +74,7 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, output.naming=NULL
   }
 
   # return
+  assign("M", M, envir=get(save.env))
   if(is.character(output.naming)) save(M, file=paste0(output.naming, ".Rdata"))
-  return(M)
 
 }

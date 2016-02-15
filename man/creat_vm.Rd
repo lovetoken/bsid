@@ -5,7 +5,7 @@
 \title{Create vedio matrix (미완성)}
 \usage{
 creat_vm(wd = dir(full.names = TRUE, ...), rgb = FALSE,
-  output.naming = NULL, ...)
+  save.env = "bsid_env", output.naming = NULL, ...)
 }
 \arguments{
 \item{wd}{영상프레임 집합의 path 를 vector 형식으로 입력합니다.}

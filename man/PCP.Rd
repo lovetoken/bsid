@@ -4,8 +4,7 @@
 \alias{PCP}
 \title{PCP algorithm (미완성)}
 \usage{
-PCP(x, n1, n2, iter.max = 100, save.env = "bsdi_env",
-  output.naming = NULL)
+PCP(x, iter.max = 100, save.env = "bsid_env", output.naming = NULL)
 }
 \arguments{
 \item{x}{영상정보 matrix 를 입력합니다.}

@@ -4,7 +4,7 @@
 \alias{save_anipic}
 \title{Convert animation GIF picture about video data matrix (black and white)}
 \usage{
-save_anipic(x, interval = 0.1, save.name, nc)
+save_anipic(x, interval = 0.1, save.name, ...)
 }
 \arguments{
 \item{x}{영상정보 matrix 를 입력합니다.}

@@ -9,20 +9,19 @@
 #' ## not run
 #' plot_vm(M, picture=1, nc=160)
 
-plot_vm <- function(x, picture=1, nc) {
+plot_vm <- function(x, picture=1, width) {
   # pre
   default <- par()$mar
-  stopifnot(is.integer(picture))
-  stopifnot(is.integer(nc))
+  picture <- as.integer(picture)
+  nc <- as.integer(nc)
 
   # function content
   par(mar=rep(0,4))
   adjust.x <- (x-min(x))/(max(x)-min(x))
-  adjust.x[,picture] %>% as.vector %>% matrix(., ncol=nc) %>% pixmapGrey %>% plot
+  adjust.x[,picture] %>% as.vector %>% matrix(., ncol=width) %>% pixmapGrey %>% plot
 
   # round off
   par(mar=default)
-  rm(default, adjust.x)
 }
 
 #' Convert animation GIF picture about video data matrix (black and white)
@@ -41,16 +40,16 @@ plot_vm <- function(x, picture=1, nc) {
 #' ## not run
 #' save_anipic(M, nc=160)
 
-save_anipic <- function(x, interval=0.1, save.name, nc){
+save_anipic <- function(x, interval=0.1, save.name, ...){
   # pre
   stopifnot(is.character(save.name))
-  stopifnot(is.numeric(interval))
-  stopifnot(is.integer(nc))
+  interal <- as.numeric(interval)
+  nc <- as.integer(nc)
 
   # function content
   saveGIF(expr={
-    for(i in seq(dim(x)[2])) plot_vm(x, picture=i, nc=nc)
-  }, interval=interval, movie.name=paste0(save.name, ".gif"))
+    for(i in seq(dim(x)[2])) plot_vm(x, picture=i, width=attributes(x)$width)
+  }, interval=interval, movie.name=paste0(save.name, ".gif"), ...)
 
   # round off
   ## message return

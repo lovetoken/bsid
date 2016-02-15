@@ -4,7 +4,7 @@
 \alias{plot_vm}
 \title{Convert oneframe picture about video data matrix (black and white)}
 \usage{
-plot_vm(x, picture = 1, nc)
+plot_vm(x, picture = 1, width)
 }
 \arguments{
 \item{x}{영상정보 matrix 를 입력합니다.}

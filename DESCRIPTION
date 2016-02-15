@@ -1,7 +1,7 @@
 Package: bsid
 Type: Package
 Title: Background Subtraction and Image Denoising (BSID)
-Version: 0.111
+Version: 0.112
 Author: HyoJin_Song <lt.lovetoken@gmail.com>
 Maintainer: HyoJin_Song <lt.lovetoken@gmail.com>
 Depends: R (>= 3.2)
