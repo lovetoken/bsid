@@ -7,7 +7,7 @@
 #' @export
 #' @examples
 #' ## not run
-#' plot_vm(M, picture=1, nc-160)
+#' plot_vm(M, picture=1, nc=160)
 
 plot_vm <- function(x, picture=1, nc) {
   # pre
