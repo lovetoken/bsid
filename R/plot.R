@@ -13,7 +13,6 @@ plot_vm <- function(x, picture=1, width) {
   # pre
   default <- par()$mar
   picture <- as.integer(picture)
-  nc <- as.integer(nc)
 
   # function content
   par(mar=rep(0,4))
@@ -44,7 +43,6 @@ save_anipic <- function(x, interval=0.1, save.name, ...){
   # pre
   stopifnot(is.character(save.name))
   interal <- as.numeric(interval)
-  nc <- as.integer(nc)
 
   # function content
   saveGIF(expr={

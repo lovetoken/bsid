@@ -13,7 +13,7 @@
 
 PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
   # pre
-  stopifnot(is.integer(iter.max))
+  iter.max <- as.integer(iter.max)
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir=globalenv())
   n1 <- attributes(x)$n1
