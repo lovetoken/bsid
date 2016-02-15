@@ -3,6 +3,7 @@
 export(PCP)
 export(Shrinkage_operator)
 export(Singular_value_thresholding_operator)
+export(WN_point)
 export(bound_trim)
 export(creat_vm)
 export(plot_vm)

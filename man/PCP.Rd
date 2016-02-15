@@ -2,7 +2,7 @@
 % Please edit documentation in R/PCP.R
 \name{PCP}
 \alias{PCP}
-\title{PCP algorithm (미완성)}
+\title{PCP algorithm}
 \usage{
 PCP(x, iter.max = 100, save.env = "bsid_env", output.naming = NULL)
 }
@@ -19,5 +19,13 @@ PCP algorithm
 }
 \details{
 본 함수는 \code{Singular_value_thresholding_operator()}, \code{Shrinkage_operator()} 함수를 이용합니다.
+}
+\examples{
+PCP(M)
+ls(bsid_env)
+
+# identify video of L, S
+save_anipic(bsid_env$L, save.name="L")
+save_anipic(bsid_env$S, save.name="S")
 }
 

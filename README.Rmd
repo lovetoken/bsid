@@ -1,0 +1,99 @@
+---
+title: "Overview of bsid package" 
+author: "lovetoken"
+output: 
+  html_document: 
+    fig_caption: yes
+    fig_height: 6
+    fig_width: 6
+    keep_md: yes
+    theme: readable
+    toc: yes
+---
+
+```{r My_Rmarkdown_Environment, echo=FALSE, warning=FALSE, message=FALSE}
+useful.lovetoken::librarys(c("bsid", "useful.lovetoken", "dplyr", "bmp", "pixmap", "animation", "corpcor", "progress", "servr", "knitr"), auto.upd=F)
+
+## knitr global option
+opts_chunk$set(fig.path='figure/', warning=F)
+```
+
+*********************************************************************
+
+# creating M matrix
+
+Mmatrix 만들기
+
+```{r}
+creat_vm(path="./example_data/airport_sub/")
+M <- bsid_env$M
+```
+
+M matrix 확인하기
+
+```{r}
+save_anipic(M, save.name="airport_sub_M")
+```
+
+![](airport_sub_M.gif)
+
+# PCP
+
+```{r}
+PCP(M)
+L <- bsid_env$L
+S <- bsid_env$S
+```
+
+L, S matrix 확인하기
+
+```{r}
+save_anipic(L, save.name="airport_sub_L")
+save_anipic(S, save.name="airport_sub_S")
+```
+
+![](airport_sub_L.gif)
+![](airport_sub_S.gif)
+
+# Mmatrix 에 point type WN 추가하기
+
+```{r}
+WN_point(M)
+Mstar <- bsid_env$Mstar
+```
+
+확인하기
+
+```{r}
+save_anipic(Mstar, save.name="airport_sub_Mstar")
+```
+
+![](airport_sub_Mstar.gif)
+
+# Mstar PCP
+
+```{r}
+PCP(Mstar)
+Lstar <- bsid_env$L
+Sstar <- bsid_env$S
+```
+
+확인하기
+
+```{r}
+save_anipic(Lstar, save.name="airport_sub_Lstar")
+save_anipic(Sstar, save.name="airport_sub_Sstar")
+```
+
+![](airport_sub_Lstar.gif)
+![](airport_sub_Sstar.gif)
+
+# Image Denoising
+
+구현중입니다.
+
+**********************************************************************
+
+```{r My_Rmarkdown_Environment_end, echo=F}
+# save.image()
+```

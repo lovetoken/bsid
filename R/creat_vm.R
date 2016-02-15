@@ -1,4 +1,4 @@
-#' Create vedio matrix (미완성)
+#' Create vedio matrix
 #'
 #' 순차적으로 저장되어있는 영상 프레임 (.bmp format 만 현재 지원) 워킹디렉토리를 지정시 vedio matrix 를 만들어 반환합니다.
 #' 반환되는 객체는 vm class로 본 내용물은 행렬이며, 원본 프레임의 메타정보 들은(e.g n1, n2) 속성값으로 저장됩니다.
@@ -13,6 +13,8 @@
 
 creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env", output.naming=NULL, ...){
   # pre
+  stopifnot(require(bmp))
+  stopifnot(require(pixmap))
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   stopifnot(is(wd, "vector"))
   wd <- sort(wd)
