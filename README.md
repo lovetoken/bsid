@@ -1,19 +1,6 @@
 # Overview of bsid package
 
 
-```
-##       open_packages before_version current_version
-## 1         animation            2.4             2.4
-## 2               bmp            0.2             0.2
-## 3              bsid          0.113           0.113
-## 4           corpcor          1.6.8           1.6.8
-## 5             dplyr          0.4.3           0.4.3
-## 6             knitr         1.12.3          1.12.3
-## 7            pixmap         0.4-11          0.4-11
-## 8          progress          1.0.2           1.0.2
-## 9             servr          0.2.3           0.2.3
-## 10 useful.lovetoken          0.124           0.124
-```
 
 Background Subtraction and Image Denoising (BSID) R package
 
@@ -117,7 +104,7 @@ coming soon.
 
 coming soon.
 
-# package Maintainer
+# **bsid** package (in R) Maintainer
 
 Song HyoJin 
 

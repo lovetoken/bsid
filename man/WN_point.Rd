@@ -4,8 +4,8 @@
 \alias{WN_point}
 \title{Point type white noise addition of vedio matrix}
 \usage{
-WN_point(x, point.N.mean = 100, point.N.sd = 10, save.env = "bsid_env",
-  output.naming = NULL)
+WN_point(x, point.N.mean = attributes(x)$n1 * 0.01, point.N.sd = 10,
+  save.env = "bsid_env", output.naming = NULL)
 }
 \arguments{
 \item{x}{영상정보 matrix 를 입력합니다.}
@@ -24,6 +24,6 @@ Point type white noise addition of vedio matrix.
 $M$ matrix 에 white noise 를 부여하여 $M^\star$ 를 만들며, 잡음타입은 랜덤하게 부여된 point type white noise 입니다.
 }
 \examples{
-WN_point(M, point.N.mean=100, point.N.sd=10, output.naming="Mstar")
+WN_point(M, output.naming="Mstar")
 }
 
