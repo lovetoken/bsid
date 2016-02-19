@@ -11,7 +11,7 @@ output:
 ---
 
 ```{r My_Rmarkdown_Environment, echo=FALSE, warning=FALSE, message=FALSE}
-useful.lovetoken::librarys(c("bsid", "useful.lovetoken", "dplyr", "bmp", "pixmap", "animation", "corpcor", "progress", "servr", "knitr"), auto.upd=F)
+useful.lovetoken::librarys(c("bsid", "useful.lovetoken", "dplyr", "bmp", "pixmap", "animation", "corpcor", "progress", "servr", "knitr"), auto.upd=F, message=F)
 
 ## knitr global option
 opts_chunk$set(fig.path='figure/', warning=F, message=F, cache=T)
@@ -111,7 +111,7 @@ coming soon.
 
 coming soon.
 
-# package Maintainer
+# **bsid** package (in R) Maintainer
 
 Song HyoJin 
 
