@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{plot_vm}
 \alias{plot_vm}
-\title{Convert oneframe picture about video data matrix (black and white)}
+\title{Convert oneframe picture about video data matrix (Only black and white)}
 \usage{
 plot_vm(x, picture = 1, width)
 }

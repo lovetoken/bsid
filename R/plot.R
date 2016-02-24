@@ -1,4 +1,4 @@
-#' Convert oneframe picture about video data matrix (black and white)
+#' Convert oneframe picture about video data matrix (Only black and white)
 #'
 #' 영상정보 matrix 에 대하여 영상중 1프레임을 흑백사진으로 ploting 합니다.
 #' @param x 영상정보 matrix 를 입력합니다.
@@ -24,7 +24,7 @@ plot_vm <- function(x, picture=1, width) {
   par(mar=default)
 }
 
-#' Convert animation GIF picture about video data matrix (black and white)
+#' Convert animation GIF picture about video data matrix
 #'
 #' 영상정보 matrix 를 animationGIF 파일로 변환시킵니다.
 #' @param x 영상정보 matrix 를 입력합니다.

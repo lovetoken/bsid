@@ -88,9 +88,7 @@ save_anipic(Mstar, save.name="airport_sub_Mstar")
 PCP(Mstar)
 Lstar <- bsid_env$L
 Sstar <- bsid_env$S
-```
 
-```{r}
 save_anipic(Lstar, save.name="airport_sub_Lstar")
 save_anipic(Sstar, save.name="airport_sub_Sstar")
 ```
@@ -105,11 +103,48 @@ $S^\star$ 확인하기
 
 ## Image Denoising
 
-coming soon.
+$M^\prime$ 만들기 (method="median_filter")
+
+```{r}
+denoising(Mstar, method="median_filter", W0=1, lambda=0.3)
+Mprime <- bsid_env$prime
+
+save_anipic(Mprime, save.name="airport_sub_Mprime")
+```
+
+$M^\prime$ 확인하기
+
+![](airport_sub_Mprime.gif)
+
+$S^\prime$ 만들기 (method="median_filter")
+
+```{r}
+denoising(Sstar, method="median_filter", W0=1, lambda=0.3)
+Sprime <- bsid_env$prime
+
+save_anipic(Sprime, save.name="airport_sub_Sprime")
+```
+
+$S^\prime$ 확인하기
+
+![](airport_sub_Sprime.gif)
+
+$S^\prime + L^\star$ 확인하기
+
+```{r}
+Mpprime <- Sprime + Lstar
+
+save_anipic(Mpprime, save.name="airport_sub_Mpprime")
+```
+
+![](airport_sub_Mpprime.gif)
 
 ## MSE compare
 
-coming soon.
+```{r}
+norm(M-Mprime, type="F")
+norm(M-Mpprime, type="F")
+```
 
 # **bsid** package (in R) Maintainer
 

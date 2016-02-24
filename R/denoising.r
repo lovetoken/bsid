@@ -10,7 +10,7 @@
 denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", "cross_shape_median", "cross_shape_MDMR", "mean_oneframe", "median_oneframe", "auto_outlier_filter", "median_filter"),
                       W0, lambda, save.env="bsid_env", output.naming=NULL, ...){
   # pre
-  stopifnot(require(dplyr))
+  stopifnot(require(dplyr)); stopifnot(require(progress))
   stopifnot(method %in% c("mean", "median", "MDMR", "cross_shape_mean", "cross_shape_median", "cross_shape_MDMR", "mean_oneframe", "median_oneframe", "auto_outlier_filter", "median_filter"))
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir=globalenv())
@@ -264,8 +264,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
 
     # Median_filter method denoising algorithm
     Mdf_for_prime <- prime_for_prime <- matrix(NA, n1, n2)
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -283,7 +285,7 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
 
     }
 
-    Mnoise_detect <- apply(Mdf_for_prime, 2, function(x) x>=quantile(x, probs=1-lambda) )
+    Mnoise_detect <- apply(Mdf_for_prime, 2, function(x) x>=quantile(x, probs=1-lambda))
 
     for(i in seq(n1)){
       for(j in seq(n2)){

@@ -13,7 +13,7 @@
 
 WN_point <- function(x, point.N.mean=attributes(x)$n1*.01, point.N.sd=10, save.env="bsid_env", output.naming=NULL){
   # pre
-  stopifnot(require(dplyr))
+  stopifnot(require(dplyr)); stopifnot(require(progress))
   stopifnot(is.numeric(point.N.mean))
   stopifnot(is.numeric(point.N.sd))
   stopifnot(is(output.naming, "character") | is.null(output.naming))
@@ -22,7 +22,9 @@ WN_point <- function(x, point.N.mean=attributes(x)$n1*.01, point.N.sd=10, save.e
   n2 <- attributes(x)$n2
 
   # content
+  pb <- progress_bar$new(total=n2)
   for(j in seq(n2)){
+    pb$tick()
     PWN.N <- round(rnorm(1, point.N.mean, point.N.sd)) %>% abs
     PWN.index <- sample(seq(n1), PWN.N)
     x[PWN.index, j] <- 1 # White Noise addition

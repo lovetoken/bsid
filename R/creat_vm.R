@@ -13,8 +13,7 @@
 
 creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env", output.naming=NULL, ...){
   # pre
-  stopifnot(require(bmp))
-  stopifnot(require(pixmap))
+  stopifnot(require(bmp)); stopifnot(require(pixmap)); stopifnot(require(progress))
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   stopifnot(is(wd, "vector"))
   wd <- sort(wd)
@@ -61,7 +60,9 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env
 
     # M matrix space <- grey scale pixel value
 
+    pb <- progress_bar$new(total=length(wd))
     for(i in seq(length(wd))){
+      pb$tick()
       readbmp <- read.bmp(f=wd[i])
       grey.scale <- pixmapGrey(readbmp)
       M[,i] <- as.numeric(attributes(grey.scale)$grey)

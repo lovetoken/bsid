@@ -19,6 +19,7 @@
 
 PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
   # pre
+  stopifnot(require(progress))
   iter.max <- as.integer(iter.max)
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir=globalenv())
@@ -31,8 +32,9 @@ PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
   lamda <- sqrt(max(n1, n2))^(-1)
   delta <- 10^(-7)
 
-  iter <- 1
+  iter <- 1; pb <- progress_bar$new(total=iter.max)
   repeat{
+    pb$tick()
     L <- Singular_value_thresholding_operator(mu^(-1), x-S+mu^(-1)*Y)
     S <- Shrinkage_operator(lamda*mu^(-1), x-L+mu^(-1)*Y)
     Y <- Y+mu*(x-L-S)

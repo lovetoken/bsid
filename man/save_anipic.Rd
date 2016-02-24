@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{save_anipic}
 \alias{save_anipic}
-\title{Convert animation GIF picture about video data matrix (black and white)}
+\title{Convert animation GIF picture about video data matrix}
 \usage{
 save_anipic(x, interval = 0.1, save.name, ...)
 }
