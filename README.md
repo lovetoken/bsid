@@ -136,7 +136,29 @@ save_anipic(Mpprime, save.name="airport_sub_Mpprime")
 
 ## MSE compare
 
-coming soon.
+$$\mid\mid{M-M^{\prime}}\mid\mid_{F}$$
+
+
+```r
+norm(M-Mprime, type="F")
+```
+
+```
+## [1] 96.96882
+```
+
+$$\mid\mid{M-(S^{\prime} + L^{\star})}\mid\mid_{F}$$
+
+
+```r
+norm(M-Mpprime, type="F")
+```
+
+```
+## [1] 47.07536
+```
+
+$$\mid\mid{M-M^{\prime}}\mid\mid_{F} \ \ge\  \mid\mid{M-(S^{\prime} + L^{\star})}\mid\mid_{F}$$
 
 # **bsid** package (in R) Maintainer
 

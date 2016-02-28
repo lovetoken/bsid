@@ -25,7 +25,9 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   if(method=="mean_oneframe"){
 
     # Mean method(Only oneframe) denoising algorithm
+    pb <- progress_bar$new(total=n2)
     for(n in seq(n2)){
+      pb$tick()
       Frame.picture <- matrix(star[,n], ncol=attributes(x)$width)
       trans.Frame.picture <- Frame.picture
 
@@ -48,7 +50,9 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   } else if(method=="median_oneframe"){
 
     # Median method(Only oneframe) denoising algorithm
+    pb <- progress_bar$new(total=n2)
     for(n in seq(n2)){
+      pb$tick()
       Frame.picture <- matrix(star[,n], ncol=attributes(x)$width)
       trans.Frame.picture <- Frame.picture
 
@@ -71,8 +75,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   } else if(method=="mean"){
 
     # Mean method denoising algorithm
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -97,8 +103,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   } else if(method=="median"){
 
     # Median method denoising algorithm
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -123,8 +131,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   } else if(method=="MDMR"){
 
     # Median detect after mean value replace method(MDMR) denoising algorithm
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -149,8 +159,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   } else if(method=="cross_shape_mean"){
 
     # Cross shape mean detect denoising algorithm
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -175,8 +187,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   } else if(method=="cross_shape_median"){
 
     # Cross shape median detect denoising algorithm
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -201,8 +215,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
   } else if(method=="cross_shape_MDMR"){
 
     # Cross shape MDMR denoising algorithm
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -228,8 +244,10 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
 
     # Auto_outlier_filter method denoising algorithm : lambda 인자가 필요 없으나 인자를 빼면 안됨
     Mdf_for_prime <- prime_for_prime <- matrix(NA, n1, n2)
+    pb <- progress_bar$new(total=n1)
     for(i in seq(n1)){
 
+      pb$tick()
       # ith row Mmatrix scale >> real picture scale
       h <- i%%attributes(x)$height
       w <- (i%/%attributes(x)$height)+1
@@ -247,7 +265,7 @@ denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", 
 
     }
 
-    Mnoise_detect <- apply(Mdf_for_prime, 2, function(x) outlier_detect(x)) # within "Sub_Function.R" script
+    Mnoise_detect <- apply(Mdf_for_prime, 2, function(x) outlier_detect(x)) # outlier_detect() function
 
     for(i in seq(n1)){
       for(j in seq(n2)){
