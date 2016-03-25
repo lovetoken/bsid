@@ -6,8 +6,8 @@
 \usage{
 denoising(x, method = c("mean", "median", "MDMR", "cross_shape_mean",
   "cross_shape_median", "cross_shape_MDMR", "mean_oneframe", "median_oneframe",
-  "auto_outlier_filter", "median_filter"), W0, lambda, save.env = "bsid_env",
-  output.naming = NULL, ...)
+  "auto_outlier_filter", "median_filter", "MDMR_filter"), W0, lambda,
+  save.env = "bsid_env", output.naming = NULL, ...)
 }
 \arguments{
 \item{x}{영상정보 matrix 를 입력합니다.}

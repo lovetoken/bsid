@@ -14,7 +14,7 @@ output:
 useful.lovetoken::librarys(c("bsid", "useful.lovetoken", "dplyr", "bmp", "pixmap", "animation", "corpcor", "progress", "servr", "knitr"), auto.upd=F, message=F)
 
 ## knitr global option
-opts_chunk$set(fig.path='figure/', warning=F, message=F, cache=T)
+opts_chunk$set(fig.path='figure/', warning=F, message=F)
 ```
 
 Background Subtraction and Image Denoising (BSID) R package

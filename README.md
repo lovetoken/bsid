@@ -95,11 +95,11 @@ $S^\star$ 확인하기
 
 ## Image Denoising
 
-$M^\prime$ 만들기 (method="median_filter")
+$M^\prime$ 만들기 (method="MDMR_filter")
 
 
 ```r
-denoising(Mstar, method="median_filter", W0=1, lambda=0.3)
+denoising(Mstar, method="MDMR_filter", W0=1, lambda=0.1)
 Mprime <- bsid_env$prime
 
 save_anipic(Mprime, save.name="airport_sub_Mprime")
@@ -113,7 +113,7 @@ $S^\prime$ 만들기 (method="median_filter")
 
 
 ```r
-denoising(Sstar, method="median_filter", W0=1, lambda=0.3)
+denoising(Sstar, method="MDMR_filter", W0=1, lambda=0.1)
 Sprime <- bsid_env$prime
 
 save_anipic(Sprime, save.name="airport_sub_Sprime")
@@ -144,7 +144,7 @@ norm(M-Mprime, type="F")
 ```
 
 ```
-## [1] 96.96882
+## [1] 83.77646
 ```
 
 $$\mid\mid{M-(S^{\prime} + L^{\star})}\mid\mid_{F}$$
@@ -155,7 +155,7 @@ norm(M-Mpprime, type="F")
 ```
 
 ```
-## [1] 47.07536
+## [1] 43.67682
 ```
 
 $$\mid\mid{M-M^{\prime}}\mid\mid_{F} \ \ge\  \mid\mid{M-(S^{\prime} + L^{\star})}\mid\mid_{F}$$
