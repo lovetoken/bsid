@@ -8,7 +8,7 @@
 #' @examples
 #'
 denoising <- function(x, method=c("mean", "median", "MDMR", "cross_shape_mean", "cross_shape_median", "cross_shape_MDMR", "mean_oneframe", "median_oneframe", "auto_outlier_filter", "median_filter", "MDMR_filter"),
-                      W0, lambda, save.env="bsid_env", output.naming=NULL, ...){
+                      W0=1, lambda, save.env="bsid_env", output.naming=NULL, ...){
   # pre
   stopifnot(require(dplyr)); stopifnot(require(progress))
   stopifnot(method %in% c("mean", "median", "MDMR", "cross_shape_mean", "cross_shape_median", "cross_shape_MDMR", "mean_oneframe", "median_oneframe", "auto_outlier_filter", "median_filter", "MDMR_filter"))
