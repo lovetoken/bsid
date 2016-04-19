@@ -5,7 +5,7 @@
 \title{Create vedio matrix}
 \usage{
 creat_vm(wd = dir(full.names = TRUE, ...), rgb = FALSE,
-  save.env = "bsid_env", output.naming = NULL, ...)
+  save.env = "bsid_env", output.naming = NULL, format = "bmp", ...)
 }
 \arguments{
 \item{wd}{영상프레임 집합의 path 를 vector 형식으로 입력합니다.}
@@ -17,7 +17,7 @@ creat_vm(wd = dir(full.names = TRUE, ...), rgb = FALSE,
 \item{...}{\code{wd} 인자값을 \code{dir(...)} 로 지정합니다. 이에 대한 상속인자를 조정할 수 있습니다.}
 }
 \description{
-순차적으로 저장되어있는 영상 프레임 (.bmp format 만 현재 지원) 워킹디렉토리를 지정시 vedio matrix 를 만들어 반환합니다.
+순차적으로 저장되어있는 영상 프레임 (bmp, jpg, jpeg format 만 현재 지원) 워킹디렉토리를 지정시 vedio matrix 를 만들어 반환합니다.
 반환되는 객체는 vm class로 본 내용물은 행렬이며, 원본 프레임의 메타정보 들은(e.g n1, n2) 속성값으로 저장됩니다.
 }
 
