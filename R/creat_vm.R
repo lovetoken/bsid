@@ -71,7 +71,7 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env
     pb <- progress_bar$new(total=length(wd))
     for(i in seq(length(wd))){
       pb$tick()
-      readbmp <- read.bmp(f=wd[i])
+      readbmp <- read.bmp(wd[i])
       grey.scale <- pixmapGrey(readbmp)
       M[,i] <- as.numeric(attributes(grey.scale)$grey)
     }
@@ -81,7 +81,7 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env
     pb <- progress_bar$new(total=length(wd))
     for(i in seq(length(wd))){
       pb$tick()
-      readjp <- readJPEG(f=wd[i])
+      readjp <- readJPEG(wd[i])
       grey.scale <- pixmapGrey(readjp)
       M[,i] <- as.numeric(attributes(grey.scale)$grey)
     }
