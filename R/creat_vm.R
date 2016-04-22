@@ -58,8 +58,8 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env
     read <- readJPEG(wd[1])
   }
 
-  width <- dim(read)[1]
-  height <- dim(read)[2]
+  height <- dim(read)[1]
+  width <- dim(read)[2]
 
   ## M matrix space
   M <- matrix(NA, nrow=width*height, ncol=length(wd))
