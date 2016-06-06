@@ -29,7 +29,6 @@ Singular_value_thresholding_operator <- function(tau, x){
 
   res <- U%*%Shrinkage_operator(tau, D)%*%t(V)
 
-  # round off
-  rm(svd.x, U, D, V)
+  # return
   return(res)
 }

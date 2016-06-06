@@ -11,7 +11,7 @@
 
 plot_vm <- function(x, picture=1, width) {
   # pre
-  stopifnot(require(pixmap))
+  stopifnot(require(pixmap)); stopifnot(require(dplyr))
   default <- par()$mar
   picture <- as.integer(picture)
 
@@ -44,7 +44,6 @@ save_anipic <- function(x, interval=0.1, save.name, ...){
   # pre
   stopifnot(require(animation))
   stopifnot(is.character(save.name))
-  interal <- as.numeric(interval)
 
   # function content
   saveGIF(expr={

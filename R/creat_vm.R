@@ -4,14 +4,13 @@
 #' 반환되는 객체는 vm class로 본 내용물은 행렬이며, 원본 프레임의 메타정보 들은(e.g n1, n2) 속성값으로 저장됩니다.
 #' @param wd 영상프레임 집합의 path 를 vector 형식으로 입력합니다.
 #' @param output.naming 이 인자에 값을 부여하면 반환되는 vedio matrix 를 .Rdata 형식파일을 외부로 저장시킵니다.
-#' @param rgb 흑백사진형이 아닌 컬러모드로 저장시킬 것인지 여부를 정합니다.
 #' @param ... \code{wd} 인자값을 \code{dir(...)} 로 지정합니다. 이에 대한 상속인자를 조정할 수 있습니다.
 #' @return
 #' @details
 #' @export
 #' @examples
 
-creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env", output.naming=NULL, format="bmp", ...){
+creat_vm <- function(wd=dir(full.names=TRUE, ...), save.env="bsid_env", output.naming=NULL, format="bmp", ...){
   # pre
   stopifnot(require(bmp)); stopifnot(require(pixmap)); stopifnot(require(progress)); stopifnot(require(jpeg))
   stopifnot(is(output.naming, "character") | is.null(output.naming))
@@ -89,7 +88,7 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), rgb=FALSE, save.env="bsid_env
   }
 
   ## attributes of `M`
-  attr(M, "width") <- width;
+  attr(M, "width") <- width
   attr(M, "height") <- height
   attr(M, "n1") <- width*height
   attr(M, "n2") <- length(wd)
