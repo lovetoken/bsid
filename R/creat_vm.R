@@ -8,14 +8,14 @@
 #' @return
 #' @details
 #' @export
-#' @examples
 
-creat_vm <- function(wd=dir(full.names=TRUE, ...), save.env="bsid_env", output.naming=NULL, format="bmp", ...){
-  # pre
-  stopifnot(require(bmp)); stopifnot(require(pixmap)); stopifnot(require(progress)); stopifnot(require(jpeg))
+creat_vm <- function(wd = dir(full.names = T, ...), save.env = "bsid_env", output.naming = NULL, format = "bmp", ...){
+
+  stopifnot(require(bmp), require(pixmap), require(progress), require(jpeg))
   stopifnot(is(output.naming, "character") | is.null(output.naming))
   stopifnot(is(format, "character"))
   stopifnot(is(wd, "vector"))
+
   wd <- sort(wd)
   if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir=globalenv())
 
@@ -65,14 +65,14 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), save.env="bsid_env", output.n
 
   ## M matrix space <- grey scale pixel value
 
-  if(format=="bmp"){
+  if(format == "bmp"){
 
     pb <- progress_bar$new(total=length(wd))
     for(i in seq(length(wd))){
       pb$tick()
       readbmp <- read.bmp(wd[i])
       grey.scale <- pixmapGrey(readbmp)
-      M[,i] <- as.numeric(attributes(grey.scale)$grey)
+      M[, i] <- as.numeric(attributes(grey.scale)$grey)
     }
 
   } else if(format %in% c("jpg", "jpeg")){
@@ -82,7 +82,7 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), save.env="bsid_env", output.n
       pb$tick()
       readjp <- readJPEG(wd[i])
       grey.scale <- pixmapGrey(readjp)
-      M[,i] <- as.numeric(attributes(grey.scale)$grey)
+      M[, i] <- as.numeric(attributes(grey.scale)$grey)
     }
 
   }
@@ -90,11 +90,11 @@ creat_vm <- function(wd=dir(full.names=TRUE, ...), save.env="bsid_env", output.n
   ## attributes of `M`
   attr(M, "width") <- width
   attr(M, "height") <- height
-  attr(M, "n1") <- width*height
+  attr(M, "n1") <- width * height
   attr(M, "n2") <- length(wd)
 
   # return
-  assign("M", M, envir=get(save.env))
-  if(is.character(output.naming)) save(M, file=paste0(output.naming, ".Rdata"))
+  assign("M", M, envir = get(save.env))
+  if(is.character(output.naming)) save(M, file = paste0(output.naming, ".Rdata"))
 
 }

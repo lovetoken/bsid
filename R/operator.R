@@ -3,10 +3,7 @@
 #' Shrinkage operator function
 #' @export
 
-Shrinkage_operator <- function(tau, x){
-  # content
-  return(sign(x)*pmax(abs(x)-tau, 0))
-}
+Shrinkage_operator <- function(tau, x) sign(x) * pmax(abs(x) - tau, 0)
 
 #' Singular value thresholding operator function
 #'
@@ -17,18 +14,15 @@ Shrinkage_operator <- function(tau, x){
 #' @export
 
 Singular_value_thresholding_operator <- function(tau, x){
-  # pre
+
   stopifnot(require(corpcor))
 
-  # content
   svd.x <- fast.svd(x)
-
   U <- svd.x$u
   D <- diag(svd.x$d)
   V <- svd.x$v
+  res <- U %*% Shrinkage_operator(tau, D) %*% t(V)
 
-  res <- U%*%Shrinkage_operator(tau, D)%*%t(V)
-
-  # return
   return(res)
+
 }

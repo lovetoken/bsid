@@ -22,4 +22,3 @@ Bandwidth indexing with Bound trim
 window(10, 0, -20, 20)
 window(10, 0, -5, 20)
 }
-

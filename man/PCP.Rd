@@ -28,4 +28,3 @@ ls(bsid_env)
 save_anipic(bsid_env$L, save.name="L")
 save_anipic(bsid_env$S, save.name="S")
 }
-

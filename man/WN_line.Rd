@@ -23,4 +23,3 @@ $M$ matrix 에 white noise 를 부여하여 $M^\star$ 를 만들며, 잡음타�
 \examples{
 WN_line(M, output.naming="Mstar")
 }
-

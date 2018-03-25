@@ -17,18 +17,17 @@
 #' save_anipic(bsid_env$L, save.name="L")
 #' save_anipic(bsid_env$S, save.name="S")
 
-PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
-  # pre
+PCP <- function(x, iter.max = 100, save.env = "bsid_env", output.naming = NULL){
+
   stopifnot(require(progress))
   iter.max <- as.integer(iter.max)
   stopifnot(is(output.naming, "character") | is.null(output.naming))
-  if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir=globalenv())
+  if(!save.env %in% ls(globalenv())) assign(save.env, new.env(), envir = globalenv())
   n1 <- attributes(x)$n1
   n2 <- attributes(x)$n2
 
-  # content
   S <- Y <- 0
-  mu <- (n1*n2)/(4*sum(abs(x)))
+  mu <- (n1*n2) / (4 * sum(abs(x)))
   lamda <- sqrt(max(n1, n2))^(-1)
   delta <- 10^(-7)
 
@@ -44,7 +43,7 @@ PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
       break
     }
 
-    iter <- iter+1
+    iter <- iter + 1
   }
 
   # attributes of `L`, `S`
@@ -56,8 +55,6 @@ PCP <- function(x, iter.max=100, save.env="bsid_env", output.naming=NULL){
   # return
   assign("L", L, envir=get(save.env))
   assign("S", S, envir=get(save.env))
-  if(is.character(output.naming)) save(L, S, file=paste0(output.naming, ".Rdata"))
-
-  # round off
+  if(is.character(output.naming)) save(L, S, file = paste0(output.naming, ".Rdata"))
   message("L, S objects are saved (", save.env, "envir.)")
 }

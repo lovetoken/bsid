@@ -20,4 +20,3 @@ plot_vm(x, picture = 1, width)
 ## not run
 plot_vm(M, picture=1, nc=160)
 }
-

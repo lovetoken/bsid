@@ -9,4 +9,3 @@ Shrinkage_operator(tau, x)
 \description{
 Shrinkage operator function
 }
-

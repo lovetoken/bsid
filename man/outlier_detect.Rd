@@ -19,4 +19,3 @@ outlier_detect(r)
 r[which(outlier_detect(r))]
 boxplot(r)$out
 }
-

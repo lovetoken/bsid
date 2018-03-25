@@ -32,4 +32,3 @@ save_anipic(M, nc=160)
 \seealso{
 \link{saveGIF}, \link{plot_vm}
 }
-

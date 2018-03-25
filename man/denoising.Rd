@@ -18,4 +18,3 @@ Denoising function
 \examples{
 
 }
-

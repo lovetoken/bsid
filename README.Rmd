@@ -1,27 +1,16 @@
 ---
-title: "Overview of bsid package" 
-output: 
-  html_document: 
-    fig_caption: yes
-    fig_height: 6
-    fig_width: 6
-    keep_md: yes
-    theme: readable
-    toc: yes
+title: "Background Subtraction and Image Denoising (BSID) R package"
+author: "lovetoken"
+date: "`r Sys.Date()`"
+output: md_document
 ---
 
-```{r My_Rmarkdown_Environment, echo=FALSE, warning=FALSE, message=FALSE}
-useful.lovetoken::librarys(c("bsid", "useful.lovetoken", "dplyr", "bmp", "pixmap", "animation", "corpcor", "progress", "servr", "knitr"), auto.upd=F, message=F)
-
-## knitr global option
-opts_chunk$set(fig.path='figure/', warning=F, message=F)
+```{r echo = F, warning = F, message = F}
+library(bsid)
+library(useful.lovetoken)
+pacman::p_load(dplyr, bmp, pixmap, animation, corpcor, progress, servr, knitr)
+opts_chunk$set(fig.path='figure/', warning = F, message = F)
 ```
-
-Background Subtraction and Image Denoising (BSID) R package
-
-*********************************************************************
-
-# Example bsid package in R
 
 ## creating M matrix
 
@@ -155,17 +144,5 @@ norm(M-Mpprime, type="F")
 
 $$\mid\mid{M-M^{\prime}}\mid\mid_{F} \ \ge\  \mid\mid{M-(S^{\prime} + L^{\star})}\mid\mid_{F}$$
 
-# **bsid** package (in R) Maintainer
-
-Song HyoJin 
-
-- Korean R user
-- [HUFS](http://www.hufs.ac.kr/user/hufsenglish/) student 
 - email : <lt.lovetoken@gmail.com>
-- blog : <http://lovetoken.dothome.co.kr/>
-
-**********************************************************************
-
-```{r My_Rmarkdown_Environment_end, echo=F}
-# save.image()
-```
+- blog : <https://lovetoken.github.io/>

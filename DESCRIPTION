@@ -1,11 +1,12 @@
 Package: bsid
 Type: Package
 Title: Background Subtraction and Image Denoising (BSID)
+Description: Background Subtraction and Image Denoising
 Version: 0.4.3
 Author: HyoJin_Song <lt.lovetoken@gmail.com>
 Maintainer: HyoJin_Song <lt.lovetoken@gmail.com>
 Depends: R (>= 3.2)
 Imports: dplyr, animation, pixmap, bmp, jpeg, corpcor, progress
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 License: GPL-3
-URL: https://github.com/lovetoken
+URL: https://github.com/lovetoken/bsid

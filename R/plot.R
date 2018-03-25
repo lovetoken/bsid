@@ -9,19 +9,17 @@
 #' ## not run
 #' plot_vm(M, picture=1, nc=160)
 
-plot_vm <- function(x, picture=1, width) {
-  # pre
-  stopifnot(require(pixmap)); stopifnot(require(dplyr))
+plot_vm <- function(x, picture = 1, width) {
+
+  stopifnot(require(pixmap), require(dplyr))
   default <- par()$mar
   picture <- as.integer(picture)
 
-  # function content
-  par(mar=rep(0,4))
-  adjust.x <- (x-min(x))/(max(x)-min(x))
-  adjust.x[,picture] %>% as.vector %>% matrix(., ncol=width) %>% pixmapGrey %>% plot
+  par(mar = rep(0, 4))
+  adjust.x <- (x - min(x)) / (max(x) - min(x))
+  adjust.x[,picture] %>% as.vector %>% matrix(., ncol = width) %>% pixmapGrey %>% plot
+  par(mar = default)
 
-  # round off
-  par(mar=default)
 }
 
 #' Convert animation GIF picture about video data matrix
@@ -41,17 +39,13 @@ plot_vm <- function(x, picture=1, width) {
 #' save_anipic(M, nc=160)
 
 save_anipic <- function(x, interval=0.1, save.name, ...){
-  # pre
+
   stopifnot(require(animation))
   stopifnot(is.character(save.name))
 
-  # function content
   saveGIF(expr={
     for(i in seq(dim(x)[2])) plot_vm(x, picture=i, width=attributes(x)$width)
-  }, interval=interval, movie.name=paste0(save.name, ".gif"), autobrowse = FALSE, ...)
-
-  # round off
-  ## message return
+  }, interval = interval, movie.name = paste0(save.name, ".gif"), autobrowse = F, ...)
   message("successes convert GIF : ", getwd(), "/", save.name, ".gif")
-}
 
+}

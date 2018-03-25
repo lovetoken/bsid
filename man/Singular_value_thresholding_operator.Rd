@@ -16,4 +16,3 @@ Singular value thresholding operator function
 \seealso{
 \link{fast.svd}
 }
-
